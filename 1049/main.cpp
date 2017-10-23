@@ -7,7 +7,7 @@ bool arrange() {
     int N, M;
     int next = 0;
     stack<int> park;
-    
+
     cin >> N >> M;
     cin.get();
     int awayseq[3000] = {-1};
