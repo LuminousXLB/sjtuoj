@@ -1,3 +1,5 @@
+// 2109. 二次方程
+// #423574 正确 / 分数：100 / 时间：1123ms / 内存：11372kb
 #include <cstdio>
 
 bool delta(int a, int b2, int c) {
