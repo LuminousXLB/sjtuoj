@@ -7,13 +7,11 @@ using namespace std;
 const char overflow = '9' + 1;
 
 int main(int argc, char const *argv[]) {
-    char num[52] = {'0'};
-    char *p = num+1;
+    char num[52] = { '0' };
+    char *p = num + 1;
     int len = 0;
     cin >> p;
-    while(p[len] != '\0') {
-        ++len;
-    }
+    while(p[len]) ++len;
 
     ++num[len];
 
