@@ -22,10 +22,7 @@ int main(int argc, char const *argv[]) {
         }
     }
 
-    if(num[0] == '0') {
-        cout << p;
-    } else {
-        cout << num;
-    }
+    cout << num + '1' - num[0];
+    
     return 0;
 }
