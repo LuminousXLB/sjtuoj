@@ -1,5 +1,5 @@
 // 4047. 埃拉托色尼筛法
-// #442563 正确 / 分数：100 / 时间：193ms / 内存：14304kb
+// #519468 正确 / 分数：100 / 时间：130ms / 内存：14300kb
 #include <cstdio>
 #include <cmath>
 
@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]) {
         if (arr[i]) {
             continue;
         } else {
-            for (size_t j = 2; i * j <= max; j++) {
+            for (size_t j = 3; i * j <= max; j += 2) {
                 arr[i * j] = true;
             }
         }
