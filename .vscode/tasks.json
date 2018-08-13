@@ -63,7 +63,7 @@
         "focus": true
       },
       "windows": {
-        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static -DONLINE_JUDGE; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
+        "command": "If (Test-Path ${fileBasenameNoExtension}.exe) {del .\\${fileBasenameNoExtension}.exe}; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static -DONLINE_JUDGE; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
         "options": {
           "cwd": "${fileDirname}",
           "shell": {
@@ -85,7 +85,7 @@
         "focus": true
       },
       "windows": {
-        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
+        "command": "If (Test-Path ${fileBasenameNoExtension}.exe) {del .\\${fileBasenameNoExtension}.exe}; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
         "options": {
           "cwd": "${fileDirname}",
           "shell": {
