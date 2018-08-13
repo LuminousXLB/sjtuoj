@@ -57,6 +57,25 @@
     {
       "label": "build for oj & run",
       "type": "shell",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "focus": true
+      },
+      "windows": {
+        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static -DONLINE_JUDGE; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
+        "options": {
+          "cwd": "${fileDirname}",
+          "shell": {
+            "executable": "Powershell.exe"
+          }
+        }
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build & run",
+      "type": "shell",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -66,7 +85,7 @@
         "focus": true
       },
       "windows": {
-        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static -DONLINE_JUDGE; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
+        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
         "options": {
           "cwd": "${fileDirname}",
           "shell": {
