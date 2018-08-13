@@ -3,44 +3,55 @@
 
 using namespace std;
 
-bool arrange() {
+bool arrange()
+{
     int N, M;
-    int next = 0;
     stack<int> park;
 
     cin >> N >> M;
     cin.get();
-    int awayseq[3000] = {-1};
+
+    int awayseq[1000];
     for (int i = 0; i < N; ++i) {
         cin >> awayseq[i];
     }
 
-    for (int i = 0; i < N; ++i) {
-        cout << "*** " << awayseq[i] << endl;
-    }
+    // cout << "*** ";
+    // for (int i = 0; i < N; ++i) {
+    //     cout << awayseq[i] << " ";
+    // }
+    // cout << endl;
 
-    for (int i = 0; i < N; ++i) {
-        cout << "****" << i << endl;
+    int i = 0;
+    for (int next = 0; next < N; next++) {
         int cur = awayseq[i];
-        if(next == cur) {
-            next++;
-        } else if (park.top() == cur) {
-            park.pop();
-        } else if (park.empty() || park.size() < M) {
-            park.push(cur);
+        // cout << "next " << next << "\tcur " << cur;
+
+        if (next == cur) {
+            do {
+                i++;
+                // cout << "\ti++ " << awayseq[i] << " " << park.empty() << " " << park.top() << endl;
+            } while ((!park.empty()) && (park.top() == awayseq[i]));
+        } else if (park.empty() || (int)park.size() < M) {
+            // cout << "\tpark" << endl;
+            park.push(next);
         } else {
+            // cout << "\tfalse" << endl;
             return false;
         }
-        cout << i << '\t' << park.size() << endl;
     }
+
     return true;
 }
 
-int main() {
+int main()
+{
+    freopen("test.in", "r", stdin);
+
     int T;
-    bool rec[300] = {0};
     cin >> T;
     cin.get();
+
     for (int i = 0; i < T; ++i) {
         if (arrange()) {
             cout << "YES" << endl;
