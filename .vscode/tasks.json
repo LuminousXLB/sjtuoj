@@ -4,21 +4,77 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "taskName": "build",
-      "type": "process",
-      "command": "msbuild",
+      "label": "build for debug",
+      "type": "shell",
+      "command": "g++",
       "args": [
-        // Ask msbuild to generate full paths for file names.
-        "/property:GenerateFullPaths=true",
-        "/t:build"
+        "${file}",
+        "-o",
+        "${fileBasenameNoExtension}",
+        "-std=c++17",
+        "-Wall",
+        "-g"
       ],
       "group": "build",
       "presentation": {
-        // Reveal the output only if unrecognized errors occur.
         "reveal": "silent"
       },
-      // Use the standard MS compiler pattern to detect errors, warnings and infos
-      "problemMatcher": "$msCompile"
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build for oj",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "${file}",
+        "-o",
+        "${fileBasenameNoExtension}",
+        "-O2",
+        "-std=c++17",
+        "-Wall",
+        "-static",
+        "-DONLINE_JUDGE"
+      ],
+      "group": "build",
+      "presentation": {
+        "reveal": "silent"
+      },
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "windows": {
+        "options": {
+          "shell": {
+            "executable": "Powershell.exe"
+          }
+        }
+      },
+      "problemMatcher": "$gcc"
+    },
+    {
+      "label": "build for oj & run",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "focus": true
+      },
+      "windows": {
+        "command": "del .\\${fileBasenameNoExtension}.exe; g++ ${file} -o ${fileBasenameNoExtension} -O2 -std=c++17 -Wall -static -DONLINE_JUDGE; If (Test-Path ${fileBasenameNoExtension}.exe) {.\\${fileBasenameNoExtension}.exe};",
+        "options": {
+          "cwd": "${fileDirname}",
+          "shell": {
+            "executable": "Powershell.exe"
+          }
+        }
+      },
+      "problemMatcher": "$gcc"
     }
   ]
 }
